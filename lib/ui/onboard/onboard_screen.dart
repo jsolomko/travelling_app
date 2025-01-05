@@ -1,5 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:travelling_app/ui/onboard_view_model.dart';
 
 import 'onboard_action_button.dart';
 import 'onboard_carousel_text.dart';
@@ -17,21 +17,30 @@ class OnboardWidget extends StatelessWidget {
 }
 
 class OnboardWidgetState extends StatefulWidget {
-  const OnboardWidgetState({super.key});
+  OnboardWidgetState({super.key});
+
+  OnboardViewModel viewModel = OnboardViewModel();
 
   @override
   State<OnboardWidgetState> createState() => OnboardState();
 }
 
 class OnboardState extends State<OnboardWidgetState> {
+  var didP = true;
+
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        OnBoardMainImage(),
-        OnBoardCarouselTextWidget(),
-        OnBoardActionButton()
-      ],
-    );
+    return PopScope(
+        canPop: false,
+        onPopInvokedWithResult: (didP, _) async {
+          if (didP) Navigator.of(context).pop(true);
+        },
+        child: Column(
+          children: [
+            OnBoardMainImage(viewModel: widget.viewModel),
+            OnBoardCarouselTextWidget(viewModel: widget.viewModel),
+            OnBoardActionButton(viewModel: widget.viewModel)
+          ],
+        ));
   }
 }
