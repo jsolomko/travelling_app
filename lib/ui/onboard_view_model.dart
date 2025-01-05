@@ -1,4 +1,5 @@
 import 'dart:collection';
+import 'dart:ffi';
 
 import 'package:flutter/cupertino.dart';
 
@@ -29,13 +30,25 @@ class OnboardViewModel extends ChangeNotifier {
   String buttonText = 'Get Started';
 
   int imageIndex = 0;
+  bool goHome = false;
 
   goForward() {
     imageIndex++;
-    title = _titleList[imageIndex];
-    subtitle = _subtitleList[imageIndex];
-    imgPath = _imagePathList[imageIndex];
-    buttonText = _buttonTextList[imageIndex];
+    if (imageIndex < 3) {
+      title = _titleList[imageIndex];
+      subtitle = _subtitleList[imageIndex];
+      imgPath = _imagePathList[imageIndex];
+      buttonText = _buttonTextList[imageIndex];
+    } else {
+      goSignInScreen();
+    }
+    print("index $imageIndex");
     notifyListeners();
+  }
+
+  goSignInScreen() {
+    print('goSignInScreen');
+    imageIndex = 0;
+    goHome = true;
   }
 }

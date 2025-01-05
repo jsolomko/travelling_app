@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:travelling_app/ui/onboard_view_model.dart';
 
+import '../sing_in/sign_in.dart';
 import 'onboard_action_button.dart';
 import 'onboard_carousel_text.dart';
 import 'onboard_main_image.dart';
 
 class OnboardWidget extends StatelessWidget {
-  const OnboardWidget({super.key});
+  OnboardWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,7 @@ class OnboardWidget extends StatelessWidget {
 class OnboardWidgetState extends StatefulWidget {
   OnboardWidgetState({super.key});
 
-  OnboardViewModel viewModel = OnboardViewModel();
+  final OnboardViewModel viewModel = OnboardViewModel();
 
   @override
   State<OnboardWidgetState> createState() => OnboardState();
@@ -43,4 +44,5 @@ class OnboardState extends State<OnboardWidgetState> {
           ],
         ));
   }
+
 }

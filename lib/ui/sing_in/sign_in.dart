@@ -16,7 +16,7 @@ class SingInState extends State<SingIn> {
           children: [
             Text("Sign in now"),
             Text("Please sign in to continue our app"),
-            TextField(
+            const TextField(
                 textAlign: TextAlign.start,
                 decoration: InputDecoration(
                     contentPadding: EdgeInsets.all(16),
@@ -25,7 +25,7 @@ class SingInState extends State<SingIn> {
                     enabledBorder: InputBorder.none,
                     border: InputBorder.none,
                     focusedBorder: InputBorder.none)),
-            TextField(
+            const TextField(
                 textAlign: TextAlign.start,
                 decoration: InputDecoration(
                     contentPadding: EdgeInsets.all(16),
@@ -35,6 +35,7 @@ class SingInState extends State<SingIn> {
                     border: InputBorder.none,
                     focusedBorder: InputBorder.none)),
             ElevatedButton(onPressed: () => {}, child: Text("Sing IN")),
+            TextField(),
             Text("Forget Password?"),
             Text("Don't have an account?"),
             Text("Or connect")
@@ -43,4 +44,6 @@ class SingInState extends State<SingIn> {
       ),
     );
   }
+
+
 }

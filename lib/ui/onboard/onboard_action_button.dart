@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:travelling_app/ui/onboard_view_model.dart';
 
+import '../sing_in/sign_in.dart';
+
 class OnBoardActionButton extends StatelessWidget {
   OnboardViewModel viewModel;
 
@@ -18,7 +20,10 @@ class OnBoardActionButton extends StatelessWidget {
               width: 355,
               height: 56,
               child: ElevatedButton(
-                onPressed: () => {viewModel.goForward()},
+                onPressed: () => {
+                  viewModel.goForward(),
+                  goHoneScreen(context, viewModel.goHome)
+                },
                 child: Text(viewModel.buttonText),
                 style: ButtonStyle(
                     backgroundColor: WidgetStatePropertyAll(Colors.blueAccent)),
@@ -26,5 +31,15 @@ class OnBoardActionButton extends StatelessWidget {
             ));
       },
     );
+  }
+
+  goHoneScreen(BuildContext context, bool goHome) {
+    if (goHome) {
+      Navigator.push(
+          context,
+          MaterialPageRoute<void>(
+            builder: (BuildContext context) => SingIn(),
+          ));
+    }
   }
 }
