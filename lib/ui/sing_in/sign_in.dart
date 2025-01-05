@@ -18,24 +18,11 @@ class SingInState extends State<SingIn> {
             Text("Please sign in to continue our app"),
             const TextField(
                 textAlign: TextAlign.start,
-                decoration: InputDecoration(
-                    contentPadding: EdgeInsets.all(16),
-                    hintStyle: TextStyle(color: Colors.grey, fontSize: 15),
-                    hintText: 'email',
-                    enabledBorder: InputBorder.none,
-                    border: InputBorder.none,
-                    focusedBorder: InputBorder.none)),
+          ),
             const TextField(
                 textAlign: TextAlign.start,
-                decoration: InputDecoration(
-                    contentPadding: EdgeInsets.all(16),
-                    hintStyle: TextStyle(color: Colors.grey, fontSize: 15),
-                    hintText: 'password',
-                    enabledBorder: InputBorder.none,
-                    border: InputBorder.none,
-                    focusedBorder: InputBorder.none)),
+               ),
             ElevatedButton(onPressed: () => {}, child: Text("Sing IN")),
-            TextField(),
             Text("Forget Password?"),
             Text("Don't have an account?"),
             Text("Or connect")
