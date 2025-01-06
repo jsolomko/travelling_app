@@ -34,7 +34,7 @@ class OnboardViewModel extends ChangeNotifier {
 
   goForward() {
     imageIndex++;
-    if (imageIndex < 3) {
+    if (imageIndex <= 2) {
       title = _titleList[imageIndex];
       subtitle = _subtitleList[imageIndex];
       imgPath = _imagePathList[imageIndex];
@@ -48,7 +48,8 @@ class OnboardViewModel extends ChangeNotifier {
 
   goSignInScreen() {
     print('goSignInScreen');
-    imageIndex = 0;
+    imageIndex = 2;
     goHome = true;
+    notifyListeners();
   }
 }

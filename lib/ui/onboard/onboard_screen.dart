@@ -15,6 +15,7 @@ class OnboardWidget extends StatelessWidget {
       body: OnboardWidgetState(),
     );
   }
+
 }
 
 class OnboardWidgetState extends StatefulWidget {
@@ -27,7 +28,6 @@ class OnboardWidgetState extends StatefulWidget {
 }
 
 class OnboardState extends State<OnboardWidgetState> {
-  var didP = true;
 
   @override
   Widget build(BuildContext context) {
@@ -36,13 +36,27 @@ class OnboardState extends State<OnboardWidgetState> {
         onPopInvokedWithResult: (didP, _) async {
           if (didP) Navigator.of(context).pop(true);
         },
-        child: Column(
-          children: [
-            OnBoardMainImage(viewModel: widget.viewModel),
-            OnBoardCarouselTextWidget(viewModel: widget.viewModel),
-            OnBoardActionButton(viewModel: widget.viewModel)
-          ],
+        child: ListenableBuilder(
+          listenable: widget.viewModel,
+          builder: (context, child) {
+            return Column(
+              children: [
+                OnBoardMainImage(viewModel: widget.viewModel),
+                OnBoardCarouselTextWidget(viewModel: widget.viewModel),
+                OnBoardActionButton(viewModel: widget.viewModel)
+              ],
+            );
+          },
         ));
-  }
 
+  }
+  goHomeScreen(BuildContext context, bool goHome) {
+    if (goHome) {
+      Navigator.push(
+          context,
+          MaterialPageRoute<void>(
+            builder: (BuildContext context) => SingIn(),
+          ));
+    }
+  }
 }

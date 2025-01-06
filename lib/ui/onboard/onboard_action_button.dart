@@ -22,7 +22,6 @@ class OnBoardActionButton extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () => {
                   viewModel.goForward(),
-                  goHoneScreen(context, viewModel.goHome)
                 },
                 child: Text(viewModel.buttonText),
                 style: ButtonStyle(
@@ -33,7 +32,7 @@ class OnBoardActionButton extends StatelessWidget {
     );
   }
 
-  goHoneScreen(BuildContext context, bool goHome) {
+  goHomeScreen(BuildContext context, bool goHome) {
     if (goHome) {
       Navigator.push(
           context,
